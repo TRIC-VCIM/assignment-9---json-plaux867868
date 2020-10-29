@@ -1,0 +1,15 @@
+section {
+  border: 2px solid black;
+  margin-top: 2%;
+}
+
+p {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+img {
+  float: right;
+  width: 100px;
+  height: 115px;
+  margin-top: .25%;
+}

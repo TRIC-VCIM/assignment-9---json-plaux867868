@@ -3,9 +3,7 @@ var employeeInput = document.getElementById("employee-number");
 var clockButton = document.getElementById("clock-in");
 var viewButton = document.getElementById("view-all");
 
-var today= new Date();
-
-// NOTE - I tried putting in the new staff variable, but it broke everything I had done so far and I couldn't get it to work out.
+var container = document.getElementById("employeeinfo");
 
 var staff = {
   "employees": [{
@@ -35,29 +33,28 @@ var staff = {
 
 clockButton.addEventListener('click', ()=>{
   console.log("Clock-In clicked.")
+  var today= new Date();
   for(let i = 0; i < staff.employees.length; i++) {
     if (staff.employees[i].id === parseInt(employeeInput.value)){
       console.log("The if statement ran.");
       staff.employees[i].clockIn = today;
       console.log(staff.employees);
+    } else {
+      staff.employees[i].clockIn = "No recent punch-in";
     }
   }
   employeeInput.value = "";
 });
 
 
-// viewButton.addEventListener('click', ()=>{
-//   console.log("View clicked.")
-//   for (const [key, value] of Object.entries(staff.employees)) {
-//   console.log(`${key}: ${value}`);
-// }
-// });
+
 
 viewButton.addEventListener('click', ()=>{
   console.log("View clicked.")
-  for (p in staff.employees) {
-    var employeeData = (p, staff.employees[p]);
+  for (let i = 0; i < staff.employees.length; i++) {
+    console.log(staff.employees[i].firstName);
+    var employeeName = `<section><img src = 'images/employee-${[i]}.jpg'> <p>${staff.employees[i].firstName} ${staff.employees[i].lastName}</p> <p>${staff.employees[i].position}</p><p>${staff.employees[i].clockIn}</p></section></br>`;
+    container.insertAdjacentHTML('beforeend', employeeName);
   }
-  document.querySelector("div").innerHTML = employeeData;
 });
 
